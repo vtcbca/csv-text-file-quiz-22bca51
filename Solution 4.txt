@@ -1,0 +1,22 @@
+import csv
+
+header=['sid','sname','salary']
+
+rows=[['01','Nikunj','15000'],['02','Shiv','10000'],['03','Jay','25000'],['04','Pal','9000'],['05','Savan','7000']]
+
+with open('c:\\sqlite3\\salary.csv','w', newline='') as f:
+    W=csv.writer(f)
+    W.writerow(header)
+    W.writerows(rows)
+
+with open('c:\\sqlite3\\salary.csv','r') as f:
+    R=csv.reader(f)
+    head=list(f)
+    for i in f:
+        print(i)
+snames = [head for head in header if head[1].startswith('S') or head[1].startswith('S')]
+scount = len(snames)
+trecords = len(header)
+for record in snames:
+    print(','.join(header))
+print(f'Number of "S" names is {scount}/{trecords}')
